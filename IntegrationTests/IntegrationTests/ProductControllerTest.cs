@@ -24,7 +24,7 @@ public class ProductControllerTest
         var result = await response.Content.ReadAsStringAsync();
         
         var fullProduct =
-            JsonConvert.DeserializeObject<FullProduct>(await response.Content.ReadAsStringAsync());
+            JsonConvert.DeserializeObject<FullProduct>(result);
         
         Assert.AreEqual(fullProduct.Product.Name, "Product 1");
         Assert.AreEqual(fullProduct.Product.Description, "im a product");

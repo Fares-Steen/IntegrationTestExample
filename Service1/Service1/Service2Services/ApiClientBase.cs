@@ -7,19 +7,16 @@ namespace Service1.Service2Services;
 public class ApiClientBase : IApiClientBase
 {
     private readonly HttpClient _clientFactory;
-    private readonly ServicesOption _servicesOption;
 
-    public ApiClientBase(HttpClient clientFactory,IOptions<ServicesOption> servicesOption)
+    public ApiClientBase(HttpClient clientFactory)
     {
         _clientFactory = clientFactory;
-        _servicesOption = servicesOption.Value;
     }
-    public async Task<T> GetWithResponse<T>(string api)
+    public async Task<T> GetWithResponse<T>(string fullUrl)
     {
-        var baseUrl = _servicesOption.Service2ApiUrl;
         try
         {
-            var fullUrl = $"{baseUrl}/{api}";
+
             var request = new HttpRequestMessage(HttpMethod.Post,
                 fullUrl);
             
@@ -37,7 +34,7 @@ public class ApiClientBase : IApiClientBase
         }
         catch (Exception e)
         {
-            throw new Exception($"{e.Message}+ the service api is :{baseUrl}");
+            throw new Exception($"{e.Message}+ the service api is :{fullUrl}");
         }
 
     }
