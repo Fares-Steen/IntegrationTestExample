@@ -18,6 +18,7 @@
     <ItemGroup>
         <ProjectReference Include="..\..\Service1\Service1\Service1.csproj" />
         <ProjectReference Include="..\..\Service2\Service2\Service2.csproj" />
+        <ProjectReference Include="..\..\Service3\Service3\Service3.csproj" />
     </ItemGroup>
 
 </Project>

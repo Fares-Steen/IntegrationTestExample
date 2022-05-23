@@ -8,13 +8,15 @@ namespace IntegrationTests;
 [TestClass]
 public class ProductControllerTest
 {
+    private readonly SetUpTestEnvironment3 setUpTestEnvironment3;
     private readonly SetUpTestEnvironment2 setUpTestEnvironment2;
     private readonly SetUpTestEnvironment1 setUpTestEnvironment1;
 
     public ProductControllerTest()
     {
         setUpTestEnvironment2 = new SetUpTestEnvironment2();
-        setUpTestEnvironment1 = new SetUpTestEnvironment1(setUpTestEnvironment2.testClient);
+        setUpTestEnvironment3 = new SetUpTestEnvironment3();
+        setUpTestEnvironment1 = new SetUpTestEnvironment1(setUpTestEnvironment2.testClient,setUpTestEnvironment3.testClient);
     }
 
     [TestMethod]
@@ -29,5 +31,8 @@ public class ProductControllerTest
         Assert.AreEqual(fullProduct.Product.Name, "Product 1");
         Assert.AreEqual(fullProduct.Product.Description, "im a product");
         Assert.AreEqual(fullProduct.ProductDetails.Price, 40);
+        
+        Assert.AreEqual(fullProduct.User.FirstName, "Test");
+        Assert.AreEqual(fullProduct.User.LastName, "Testson");
     }
 }
