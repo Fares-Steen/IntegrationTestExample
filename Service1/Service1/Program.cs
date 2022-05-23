@@ -20,7 +20,9 @@ internal class Program
         builder.Services.AddSwaggerGen();
         builder.Services.Configure<ServicesOption>(builder.Configuration.GetSection(ServicesOption.Services));
         builder.Services.AddHttpClient<IService2Service, Service2Service>();
+        builder.Services.AddHttpClient<IService3Service, Service3Service>();
         builder.Services.AddScoped<IService2Service, Service2Service>();
+        builder.Services.AddScoped<IService3Service, Service3Service>();
 
         var app = builder.Build();
 
