@@ -1,9 +1,12 @@
+using System;
+using System.Linq;
 using System.Net.Http;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Service1;
+using Service1.Service2Services;
 
 
 namespace IntegrationTests;
@@ -32,13 +35,25 @@ internal class SetUpTestEnvironment1 : WebApplicationFactory<Service1.Program>
     {
         builder.ConfigureServices(serviceCollection =>
         {
-            serviceCollection.Configure<ServicesOption>(options =>
+            IOptions<ServicesOption> servicesOption = Options.Create(new ServicesOption
             {
-                options.Service2ApiUrl = "";
+                Service2ApiUrl = ""
             });
-            serviceCollection.AddSingleton(_service2Client);
+
+            serviceCollection.AddScoped<IService2Service>(_ => new Service2Service(servicesOption,_service2Client));
         });
 
         return base.CreateHost(builder);
+    }
+}
+
+public static class ServiceCollectionExtensions
+{
+    public static IServiceCollection Remove<T>(this IServiceCollection services)
+    {
+        var serviceDescriptor = services.FirstOrDefault(descriptor => descriptor.ServiceType == typeof(T));
+        if (serviceDescriptor != null) services.Remove(serviceDescriptor);
+
+        return services;
     }
 }
