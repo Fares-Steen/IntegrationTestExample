@@ -28,6 +28,7 @@ public class ProductControllerTest
         var fullProduct =
             JsonConvert.DeserializeObject<FullProduct>(result);
         
+        Assert.IsNotNull(fullProduct);
         Assert.AreEqual(fullProduct.Product.Name, "Product 1");
         Assert.AreEqual(fullProduct.Product.Description, "im a product");
         Assert.AreEqual(fullProduct.ProductDetails.Price, 40);
