@@ -10,19 +10,19 @@ public class ProductControllerTest
 {
     private readonly SetUpTestEnvironment3 setUpTestEnvironment3;
     private readonly SetUpTestEnvironment2 setUpTestEnvironment2;
-    private readonly SetUpTestEnvironment1 setUpTestEnvironment1;
+    private readonly SetUpTestEnvironment1 _setUpTestEnvironment1;
 
     public ProductControllerTest()
     {
         setUpTestEnvironment2 = new SetUpTestEnvironment2();
         setUpTestEnvironment3 = new SetUpTestEnvironment3();
-        setUpTestEnvironment1 = new SetUpTestEnvironment1(setUpTestEnvironment2.testClient,setUpTestEnvironment3.testClient);
+        _setUpTestEnvironment1 = new SetUpTestEnvironment1(setUpTestEnvironment2.TestClient,setUpTestEnvironment3.TestClient);
     }
 
     [TestMethod]
     public async Task TestMethod1()
     {
-        var response= await setUpTestEnvironment1.testClient.GetAsync($"/Product");
+        var response= await _setUpTestEnvironment1.TestClient.GetAsync($"/Product");
         var result = await response.Content.ReadAsStringAsync();
         
         var fullProduct =

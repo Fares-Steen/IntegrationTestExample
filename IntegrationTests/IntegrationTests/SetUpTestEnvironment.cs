@@ -13,26 +13,26 @@ namespace IntegrationTests;
 
 internal class SetUpTestEnvironment3 : WebApplicationFactory<Service3.Program>
 {
-    internal readonly HttpClient testClient;
+    internal readonly HttpClient TestClient;
 
     public SetUpTestEnvironment3()
     {
-        testClient = CreateClient();
+        TestClient = CreateClient();
     }
 }
 internal class SetUpTestEnvironment2 : WebApplicationFactory<Service2.Program>
 {
-    internal readonly HttpClient testClient;
+    internal readonly HttpClient TestClient;
 
     public SetUpTestEnvironment2()
     {
-        testClient = CreateClient();
+        TestClient = CreateClient();
     }
 }
 
 internal class SetUpTestEnvironment1 : WebApplicationFactory<Service1.Program>
 {
-    internal readonly HttpClient testClient;
+    internal readonly HttpClient TestClient;
     private readonly HttpClient _service2Client;
     private readonly HttpClient _service3Client;
 
@@ -40,14 +40,14 @@ internal class SetUpTestEnvironment1 : WebApplicationFactory<Service1.Program>
     {
         _service2Client = service2Client;
         _service3Client = service3Client;
-        testClient = CreateClient();
+        TestClient = CreateClient();
     }
     
     protected override IHost CreateHost(IHostBuilder builder)
     {
         builder.ConfigureServices(serviceCollection =>
         {
-            IOptions<ServicesOption> servicesOption = Options.Create(new ServicesOption
+            var servicesOption = Options.Create(new ServicesOption
             {
                 Service2ApiUrl = "",
                 Service3ApiUrl = ""
