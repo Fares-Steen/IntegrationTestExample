@@ -356,3 +356,6 @@ Service1/Service1/product.db-wal
 Service2/Service2/productDetails.db
 Service2/Service2/productDetails.db-wal
 Service2/Service2/productDetails.db-shm
+Service3/Service3/user.db
+Service3/Service3/user.db-shm
+Service3/Service3/user.db-wal

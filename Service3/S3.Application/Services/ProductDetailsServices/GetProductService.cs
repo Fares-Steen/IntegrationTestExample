@@ -1,25 +1,23 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Mapster;
 using Models.Models;
-using S3.Application.IRepositories;
+using S2.Application.IRepositories;
 
-namespace S3.Application.Services.ProductDetailsServices;
+namespace S2.Application.Services.ProductDetailsServices;
 
-public class GetProductDetailsService : IGetProductDetailsService
+public class GetUserService : IGetUserService
 {
     private readonly IUnitOfWork _unitOfWork;
 
-    public GetProductDetailsService(IUnitOfWork unitOfWork)
+    public GetUserService(IUnitOfWork unitOfWork)
     {
         _unitOfWork = unitOfWork;
     }
     
-    public async Task<List<ProductDetailsModel>> GetAll()
+    public async Task<List<UserModel>> GetAll()
     {
-        var result = await _unitOfWork.ProductDetailsRepository.GetFullAll();
-        var productDetailssList = result.Adapt<List<ProductDetailsModel>>();
-        return productDetailssList;
+        var result = await _unitOfWork.UserRepository.GetFullAll();
+        var usersList = result.Adapt<List<UserModel>>();
+        return usersList;
     }
 
 

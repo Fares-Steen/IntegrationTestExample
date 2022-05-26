@@ -1,10 +1,8 @@
-using System;
-using System.Threading.Tasks;
-using Models.Models;
+﻿using Models.Models;
 
-namespace S3.Application.Services.ProductDetailsServices;
+namespace S2.Application.Services.ProductDetailsServices;
 
-public interface ICreateProductDetailsService
+public interface ICreateUserService
 {
-    Task<Guid> Create(ProductDetailsModel productDetailsModel);
+    Task<Guid> Create(UserModel userModel);
 }

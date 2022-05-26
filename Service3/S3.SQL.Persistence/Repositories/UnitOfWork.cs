@@ -1,16 +1,15 @@
-using System.Threading.Tasks;
-using S3.Application.IRepositories;
+using S2.Application.IRepositories;
 
-namespace S3.SQL.Persistence.Repositories;
+namespace S2.SQL.Persistence.Repositories;
 
 public class UnitOfWork: IUnitOfWork
 {
-    public IProductDetailsRepository ProductDetailsRepository { get; }
-    private readonly Service2DbContext dbContext;
-    public UnitOfWork(Service2DbContext dbContext)
+    public IUserRepository UserRepository { get; }
+    private readonly Service3DbContext dbContext;
+    public UnitOfWork(Service3DbContext dbContext)
     {
         this.dbContext = dbContext;
-        ProductDetailsRepository = new ProductDetailsRepository(dbContext);
+        UserRepository = new UserRepository(dbContext);
     }
     public async Task<int> Complete()
     {

@@ -1,13 +1,9 @@
 //Service3
 
 using ApplicationDI;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using S3.Application;
-using S3.PersistenceDI;
-using S3.SQL.Persistence.Initialize;
+using S2.PersistenceDI;
+using S2.SQL.Persistence.Initialize;
+
 
 namespace Service1; // Note: actual namespace depends on the project name.
 

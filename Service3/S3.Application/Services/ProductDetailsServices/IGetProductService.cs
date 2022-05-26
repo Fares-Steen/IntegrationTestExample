@@ -1,10 +1,8 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Models.Models;
 
-namespace S3.Application.Services.ProductDetailsServices;
+namespace S2.Application.Services.ProductDetailsServices;
 
-public interface IGetProductDetailsService
+public interface IGetUserService
 {
-    Task<List<ProductDetailsModel>> GetAll();
+    Task<List<UserModel>> GetAll();
 }

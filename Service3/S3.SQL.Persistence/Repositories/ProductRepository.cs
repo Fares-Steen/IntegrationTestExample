@@ -1,25 +1,20 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using S3.Application.IRepositories;
-using S3.Domain;
-using S3.Domain.Entities;
-using S3.Domain.Exceptions;
+using S2.Application.IRepositories;
+using S2.Domain.Entities;
+using S2.Domain.Exceptions;
 
-namespace S3.SQL.Persistence.Repositories;
+namespace S2.SQL.Persistence.Repositories;
 
-public class ProductDetailsRepository : GenericRepository<ProductDetails>, IProductDetailsRepository
+public class UserRepository : GenericRepository<User>, IUserRepository
 
 {
-    public ProductDetailsRepository(Service2DbContext dbContext) : base(dbContext)
+    public UserRepository(Service3DbContext dbContext) : base(dbContext)
     {
     }
 
-    public async Task<ProductDetails?> GetFullById(Guid id)
+    public async Task<User?> GetFullById(Guid id)
     {
-        var result = await DbContext.Set<ProductDetails>()
+        var result = await DbContext.Set<User>()
             .Where(p => p.Id == id)
             .OrderBy(p => p.DateAdded)
             .AsNoTracking().AsSplitQuery().FirstAsync();
@@ -27,9 +22,9 @@ public class ProductDetailsRepository : GenericRepository<ProductDetails>, IProd
         return result;
     }
 
-    public async Task<IEnumerable<ProductDetails>> GetFullAll()
+    public async Task<IEnumerable<User>> GetFullAll()
     {
-        var result = await DbContext.Set<ProductDetails>()
+        var result = await DbContext.Set<User>()
             .OrderBy(p => p.DateAdded)
             .AsNoTracking().AsSplitQuery().ToListAsync();
         return result;
@@ -37,13 +32,13 @@ public class ProductDetailsRepository : GenericRepository<ProductDetails>, IProd
 
     public async Task DeleteById(Guid id)
     {
-        var entity = await DbContext.Set<ProductDetails>().FirstOrDefaultAsync(e => e.Id == id);
+        var entity = await DbContext.Set<User>().FirstOrDefaultAsync(e => e.Id == id);
         if (entity != null)
         {
             Delete(entity);
             return;
         }
 
-        throw new DomainNotFoundException($"there is no productDetails with id {id}");
+        throw new DomainNotFoundException($"there is no user with id {id}");
     }
 }

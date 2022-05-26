@@ -1,6 +1,6 @@
 namespace Service1;
 
-public class ProductDetails
+public class User
 {
     public int Id { get; set; }
     public string Name { get; set; }

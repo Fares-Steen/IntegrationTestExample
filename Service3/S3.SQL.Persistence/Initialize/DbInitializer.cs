@@ -1,14 +1,13 @@
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 
-namespace S3.SQL.Persistence.Initialize;
+namespace S2.SQL.Persistence.Initialize;
 
 public class DbInitializer : IDbInitializer
 {
-    private readonly Service2DbContext _context;
+    private readonly Service3DbContext _context;
 
 
-    public DbInitializer(Service2DbContext context)
+    public DbInitializer(Service3DbContext context)
     {
         _context = context;
     }

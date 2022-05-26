@@ -1,9 +1,7 @@
-using System.Threading.Tasks;
-
-namespace S3.Application.IRepositories;
+namespace S2.Application.IRepositories;
 
 public interface IUnitOfWork
 {
-    IProductDetailsRepository ProductDetailsRepository { get; }
+    IUserRepository UserRepository { get; }
     Task<int> Complete();
 }

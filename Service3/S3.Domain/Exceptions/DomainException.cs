@@ -1,6 +1,4 @@
-using System;
-
-namespace S3.Domain.Exceptions;
+namespace S2.Domain.Exceptions;
 
 public abstract class DomainException : Exception
 {

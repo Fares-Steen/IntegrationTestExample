@@ -1,11 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
-using S3.Domain.Entities.Interfaces;
+using S2.Domain.Entities.Interfaces;
 
-namespace S3.Application.IRepositories;
+namespace S2.Application.IRepositories;
 
 public interface IGenericRepository<TEntity>
     where TEntity : class, IEntity

@@ -1,23 +1,18 @@
-using System;
-using System.IO;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using S3.Domain;
-using S3.Domain.Entities;
-using S3.Domain.Entities.Interfaces;
-namespace S3.SQL.Persistence;
+using S2.Domain.Entities;
+using S2.Domain.Entities.Interfaces;
 
-public class Service2DbContext:DbContext
+namespace S2.SQL.Persistence;
+
+public class Service3DbContext:DbContext
 {
-    public Service2DbContext(DbContextOptions<Service2DbContext> options)
+    public Service3DbContext(DbContextOptions<Service3DbContext> options)
         : base(options)
     {
     }
-    public virtual DbSet<ProductDetails>? ProductDetails { get; set; }
+    public virtual DbSet<User>? User { get; set; }
     
     public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess,
         CancellationToken cancellationToken = default)
@@ -38,17 +33,17 @@ public class Service2DbContext:DbContext
         return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
     
-    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Service2DbContext>
+    public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<Service3DbContext>
     {
-        public Service2DbContext CreateDbContext(string[] args)
+        public Service3DbContext CreateDbContext(string[] args)
         {
             var configuration = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile(Directory.GetCurrentDirectory() + "/../Service3/appsettings.json")
                 .Build();
-            var builder = new DbContextOptionsBuilder<Service2DbContext>();
+            var builder = new DbContextOptionsBuilder<Service3DbContext>();
             string connectionString = configuration.GetConnectionString("DefaultConnection");
             builder.UseSqlite(connectionString);
-            return new Service2DbContext(builder.Options);
+            return new Service3DbContext(builder.Options);
         }
     }
 }

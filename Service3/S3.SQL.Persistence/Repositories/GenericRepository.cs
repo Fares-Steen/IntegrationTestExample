@@ -1,21 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using S3.Application.IRepositories;
-using S3.Domain.Entities.Interfaces;
+using S2.Application.IRepositories;
+using S2.Domain.Entities.Interfaces;
 
-namespace S3.SQL.Persistence.Repositories;
+namespace S2.SQL.Persistence.Repositories;
 
 public class GenericRepository<TEntity> : IGenericRepository<TEntity>
     where TEntity : class, IEntity
 {
-    protected readonly Service2DbContext DbContext;
+    protected readonly Service3DbContext DbContext;
 
-    protected GenericRepository(Service2DbContext dbContext)
+    protected GenericRepository(Service3DbContext dbContext)
     {
         this.DbContext = dbContext;
     }

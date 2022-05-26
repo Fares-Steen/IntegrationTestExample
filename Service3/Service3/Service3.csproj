@@ -16,7 +16,6 @@
     </ItemGroup>
     <ItemGroup>
       <ProjectReference Include="..\S3.ApplicationDI\S3.ApplicationDI.csproj" />
-      <ProjectReference Include="..\S2.ApplicationDI\S2.ApplicationDI.csproj" />
       <ProjectReference Include="..\S3.PersistenceDI\S3.PersistenceDI.csproj" />
     </ItemGroup>
     <ItemGroup>
