@@ -4,12 +4,25 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Service1</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
     </ItemGroup>
     <ItemGroup>
         <InternalsVisibleTo Include="IntegrationTests" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\S3.ApplicationDI\S3.ApplicationDI.csproj" />
+      <ProjectReference Include="..\S2.ApplicationDI\S2.ApplicationDI.csproj" />
+      <ProjectReference Include="..\S3.PersistenceDI\S3.PersistenceDI.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <Reference Include="Models, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null, ProcessorArchitecture=MSIL">
+        <HintPath>..\..\Common\Models\Models\bin\Debug\net6.0\Models.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
