@@ -352,3 +352,7 @@ MigrationBackup/
 Service1/Service1/product.db
 Service1/Service1/product.db-shm
 Service1/Service1/product.db-wal
+.idea/
+Service2/Service2/productDetails.db
+Service2/Service2/productDetails.db-wal
+Service2/Service2/productDetails.db-shm
