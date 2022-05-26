@@ -1,4 +1,4 @@
-namespace S2.Domain.Exceptions;
+namespace S3.Domain.Exceptions;
 
 public abstract class DomainException : Exception
 {

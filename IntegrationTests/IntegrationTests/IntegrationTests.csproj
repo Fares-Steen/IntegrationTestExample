@@ -10,15 +10,19 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.5" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
+        <PackageReference Include="Moq" Version="4.18.1" />
         <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
         <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
         <PackageReference Include="coverlet.collector" Version="3.1.0" />
     </ItemGroup>
-
+	<ItemGroup>
+		<ProjectReference Include="..\..\Common\Models\Models\Models.csproj" />
+	</ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\Service1\Service1\Service1.csproj" />
         <ProjectReference Include="..\..\Service2\Service2\Service2.csproj" />
         <ProjectReference Include="..\..\Service3\Service3\Service3.csproj" />
+        <ProjectReference Include="..\..\Service1\S1.Application\S1.Application.csproj" />
     </ItemGroup>
 
 </Project>

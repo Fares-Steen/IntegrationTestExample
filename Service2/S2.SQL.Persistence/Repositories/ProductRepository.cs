@@ -13,10 +13,10 @@ public class ProductDetailsRepository : GenericRepository<ProductDetails>, IProd
     {
     }
 
-    public async Task<ProductDetails?> GetFullById(Guid id)
+    public async Task<ProductDetails?> GetByProductId(Guid id)
     {
         var result = await DbContext.Set<ProductDetails>()
-            .Where(p => p.Id == id)
+            .Where(p => p.ProductId == id)
             .OrderBy(p => p.DateAdded)
             .AsNoTracking().AsSplitQuery().FirstAsync();
 

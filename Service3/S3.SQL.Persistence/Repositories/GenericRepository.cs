@@ -1,10 +1,10 @@
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using S2.Application.IRepositories;
-using S2.Domain.Entities.Interfaces;
+using S3.Application.IRepositories;
+using S3.Domain.Entities.Interfaces;
 
-namespace S2.SQL.Persistence.Repositories;
+namespace S3.SQL.Persistence.Repositories;
 
 public class GenericRepository<TEntity> : IGenericRepository<TEntity>
     where TEntity : class, IEntity

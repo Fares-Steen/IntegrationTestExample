@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using S2.SQL.Persistence;
+using S3.SQL.Persistence;
 
 #nullable disable
 
-namespace S2.SQL.Persistence.Migrations
+namespace S3.SQL.Persistence.Migrations
 {
     [DbContext(typeof(Service3DbContext))]
     [Migration("20220526111907_InitialCreate")]
@@ -19,7 +19,7 @@ namespace S2.SQL.Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.5");
 
-            modelBuilder.Entity("S2.Domain.Entities.User", b =>
+            modelBuilder.Entity("S3.Domain.Entities.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()

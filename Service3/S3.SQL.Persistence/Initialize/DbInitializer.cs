@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace S2.SQL.Persistence.Initialize;
+namespace S3.SQL.Persistence.Initialize;
 
 public class DbInitializer : IDbInitializer
 {

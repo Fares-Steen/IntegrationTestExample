@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using S2.Application.IRepositories;
-using S2.Domain.Entities;
-using S2.Domain.Exceptions;
+using S3.Application.IRepositories;
+using S3.Domain.Entities;
+using S3.Domain.Exceptions;
 
-namespace S2.SQL.Persistence.Repositories;
+namespace S3.SQL.Persistence.Repositories;
 
 public class UserRepository : GenericRepository<User>, IUserRepository
 
@@ -12,10 +12,10 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
     }
 
-    public async Task<User?> GetFullById(Guid id)
+    public async Task<User?> GetByProductId(Guid id)
     {
         var result = await DbContext.Set<User>()
-            .Where(p => p.Id == id)
+            .Where(p => p.ProductId == id)
             .OrderBy(p => p.DateAdded)
             .AsNoTracking().AsSplitQuery().FirstAsync();
 

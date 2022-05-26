@@ -1,6 +1,6 @@
-using S2.Domain.Entities.Interfaces;
+using S3.Domain.Entities.Interfaces;
 
-namespace S2.Domain.Entities;
+namespace S3.Domain.Entities;
 
 public class BaseEntity : IEntity
 {

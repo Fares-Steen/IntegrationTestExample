@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace S2.SQL.Persistence.Migrations
+namespace S3.SQL.Persistence.Migrations
 {
     public partial class InitialCreate : Migration
     {

@@ -1,4 +1,4 @@
-namespace S2.Application.IRepositories;
+namespace S3.Application.IRepositories;
 
 public interface IUnitOfWork
 {

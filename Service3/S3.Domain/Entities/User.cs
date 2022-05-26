@@ -1,4 +1,4 @@
-﻿namespace S2.Domain.Entities;
+﻿namespace S3.Domain.Entities;
 
 public class User:BaseEntity
 {

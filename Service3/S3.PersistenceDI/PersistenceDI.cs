@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using S2.Application.IRepositories;
-using S2.SQL.Persistence;
-using S2.SQL.Persistence.Initialize;
-using S2.SQL.Persistence.Repositories;
+using S3.Application.IRepositories;
+using S3.SQL.Persistence;
+using S3.SQL.Persistence.Initialize;
+using S3.SQL.Persistence.Repositories;
 
-namespace S2.PersistenceDI;
+namespace S3.PersistenceDI;
 
 public static class PersistenceDI
 {

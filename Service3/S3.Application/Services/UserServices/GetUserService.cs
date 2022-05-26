@@ -1,8 +1,8 @@
 using Mapster;
 using Models.Models;
-using S2.Application.IRepositories;
+using S3.Application.IRepositories;
 
-namespace S2.Application.Services.ProductDetailsServices;
+namespace S3.Application.Services.ProductDetailsServices;
 
 public class GetUserService : IGetUserService
 {
@@ -20,5 +20,10 @@ public class GetUserService : IGetUserService
         return usersList;
     }
 
-
+    public async Task<UserModel> GetByProductId(Guid productId)
+    {
+        var result = await _unitOfWork.UserRepository.GetByProductId(productId);
+        var usersList = result.Adapt<UserModel>();
+        return usersList;
+    }
 }

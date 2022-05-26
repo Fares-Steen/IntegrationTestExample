@@ -1,4 +1,4 @@
-namespace S2.Domain.Entities.Interfaces;
+namespace S3.Domain.Entities.Interfaces;
 
 public interface IEntity
 {

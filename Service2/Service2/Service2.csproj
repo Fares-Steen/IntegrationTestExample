@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-        <RootNamespace>Service1</RootNamespace>
+        <RootNamespace>Service2</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,8 +19,8 @@
       <ProjectReference Include="..\S2.ApplicationDI\S2.ApplicationDI.csproj" />
       <ProjectReference Include="..\S2.PersistenceDI\S2.PersistenceDI.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Service2Services" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Common\Models\Models\Models.csproj" />
+	</ItemGroup>
 
 </Project>

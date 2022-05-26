@@ -5,7 +5,7 @@ namespace S2.Application.IRepositories;
 
 public interface IProductDetailsRepository: IGenericRepository<ProductDetails>
 {
-    Task<ProductDetails?> GetFullById(Guid id);
+    Task<ProductDetails?> GetByProductId(Guid id);
     Task<IEnumerable<ProductDetails>> GetFullAll();
     Task DeleteById(Guid id);
 }

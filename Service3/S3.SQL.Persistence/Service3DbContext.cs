@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using S2.Domain.Entities;
-using S2.Domain.Entities.Interfaces;
+using S3.Domain.Entities;
+using S3.Domain.Entities.Interfaces;
 
-namespace S2.SQL.Persistence;
+namespace S3.SQL.Persistence;
 
 public class Service3DbContext:DbContext
 {

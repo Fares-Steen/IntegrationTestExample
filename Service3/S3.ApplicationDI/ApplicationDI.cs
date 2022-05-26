@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using S2.Application.Services.ProductDetailsServices;
+using S3.Application.Services.ProductDetailsServices;
 
 namespace ApplicationDI;
 

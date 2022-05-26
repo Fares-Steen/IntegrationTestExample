@@ -19,7 +19,7 @@ public class Service2Service : IService2Service
         try
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"{_servicesOption.Service2ApiUrl}/ProductDetails?productId={productId}");
+                $"{_servicesOption.Service2ApiUrl}/ProductDetails/GetByProductId?productId={productId}");
 
             var response = await _httpClientFactory.SendAsync(request);
             if (response.IsSuccessStatusCode)

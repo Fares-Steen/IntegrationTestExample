@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Models.Models;
 using S2.Application.Services.ProductDetailsServices;
-namespace Service1.Controllers;
+namespace Service2.Controllers;
 
 [ApiController]
 [Route("[controller]")]
@@ -29,5 +29,13 @@ public class ProductDetailsController : ControllerBase
     {
         var createdProductDetailsId=await _createProductDetailsService.Create(productDetailsModel);
         return Ok(createdProductDetailsId);
+    }
+
+
+    [HttpGet, Route("GetByProductId")]
+    public async Task<IActionResult> GetByProductId(Guid productId)
+    {
+        var productDetailss = await _getProductDetailsService.GetByProductId(productId);
+        return Ok(productDetailss);
     }
 }

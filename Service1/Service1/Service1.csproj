@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -16,10 +16,11 @@
     <ItemGroup>
       <ProjectReference Include="..\S1.ApplicationDI\S1.ApplicationDI.csproj" />
       <ProjectReference Include="..\S1.ApplicationDI\S1.ApplicationDI.csproj" />
+      <ProjectReference Include="..\S1.Application\S1.Application.csproj" />
       <ProjectReference Include="..\S1.PersistenceDI\S1.PersistenceDI.csproj" />
     </ItemGroup>
-    <ItemGroup>
-      <Folder Include="Service2Services" />
-    </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\Common\Models\Models\Models.csproj" />
+	</ItemGroup>
 
 </Project>

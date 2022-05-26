@@ -1,9 +1,9 @@
 using Mapster;
 using Models.Models;
-using S2.Application.IRepositories;
-using S2.Domain.Entities;
+using S3.Application.IRepositories;
+using S3.Domain.Entities;
 
-namespace S2.Application.Services.ProductDetailsServices;
+namespace S3.Application.Services.ProductDetailsServices;
 
 public class CreateUserService : ICreateUserService
 {

@@ -5,7 +5,7 @@ using S2.Application;
 using S2.PersistenceDI;
 using S2.SQL.Persistence.Initialize;
 
-namespace Service1; // Note: actual namespace depends on the project name.
+namespace Service2; // Note: actual namespace depends on the project name.
 
 
 

@@ -1,4 +1,4 @@
-namespace Service1;
+namespace Service2;
 
 public class ProductDetails
 {

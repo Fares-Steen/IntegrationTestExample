@@ -20,7 +20,7 @@ public class Service3Service : IService3Service
         try
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"{_servicesOption.Service3ApiUrl}/user?productId={productId}");
+                $"{_servicesOption.Service3ApiUrl}/user/GetByProductId?productId={productId}");
 
             var response = await _httpClientFactory.SendAsync(request);
             if (response.IsSuccessStatusCode)

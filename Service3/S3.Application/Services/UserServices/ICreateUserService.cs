@@ -1,6 +1,6 @@
 ﻿using Models.Models;
 
-namespace S2.Application.Services.ProductDetailsServices;
+namespace S3.Application.Services.ProductDetailsServices;
 
 public interface ICreateUserService
 {

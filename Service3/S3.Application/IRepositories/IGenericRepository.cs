@@ -1,7 +1,7 @@
 using System.Linq.Expressions;
-using S2.Domain.Entities.Interfaces;
+using S3.Domain.Entities.Interfaces;
 
-namespace S2.Application.IRepositories;
+namespace S3.Application.IRepositories;
 
 public interface IGenericRepository<TEntity>
     where TEntity : class, IEntity
