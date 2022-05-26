@@ -1,8 +1,8 @@
-using System.Net.Http;
 using Microsoft.Extensions.Options;
+using Models.Models;
 using Newtonsoft.Json;
 
-namespace Service1.Service2Services;
+namespace S1.Application.Services.Service3.Services;
 
 public class Service3Service : IService3Service
 {
@@ -15,18 +15,18 @@ public class Service3Service : IService3Service
         _servicesOption = servicesOption.Value;
     }
     
-    public async Task<User> GetUser()
+    public async Task<UserModel> GetUser(Guid productId)
     {
         try
         {
             var request = new HttpRequestMessage(HttpMethod.Get,
-                $"{_servicesOption.Service3ApiUrl}/user");
+                $"{_servicesOption.Service3ApiUrl}/user?productId={productId}");
 
             var response = await _httpClientFactory.SendAsync(request);
             if (response.IsSuccessStatusCode)
             {
                 var res = await response.Content.ReadAsStringAsync();
-                var data = JsonConvert.DeserializeObject<User>(res);
+                var data = JsonConvert.DeserializeObject<UserModel>(res);
                 return data;
             }
 

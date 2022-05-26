@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using S1.Application.Services.ProductServices;
+using S1.Application.Services.Service2Services;
+using S1.Application.Services.Service3.Services;
 
 namespace ApplicationDI;
 
@@ -9,6 +11,8 @@ public static class ApplicationDI
     {
         services.AddScoped<ICreateProductService, CreateProductService>();
         services.AddScoped<IGetProductService, GetProductService>();
+        services.AddScoped<IService2Service, Service2Service>();
+        services.AddScoped<IService3Service, Service3Service>();
         return services;
     }
 }

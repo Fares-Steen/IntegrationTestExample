@@ -11,8 +11,8 @@ public class UnitOfWork: IUnitOfWork
         this.dbContext = dbContext;
         ProductRepository = new ProductRepository(dbContext);
     }
-    public Task<int> Complete()
+    public async Task<int> Complete()
     {
-        throw new NotImplementedException();
+       return await dbContext.SaveChangesAsync();
     }
 }

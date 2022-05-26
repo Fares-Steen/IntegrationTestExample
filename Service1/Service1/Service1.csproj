@@ -18,5 +18,8 @@
       <ProjectReference Include="..\S1.ApplicationDI\S1.ApplicationDI.csproj" />
       <ProjectReference Include="..\S1.PersistenceDI\S1.PersistenceDI.csproj" />
     </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Service2Services" />
+    </ItemGroup>
 
 </Project>

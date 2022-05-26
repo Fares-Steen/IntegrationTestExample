@@ -7,16 +7,18 @@ namespace S1.Application.Services.ProductServices;
 
 public class CreateProductService : ICreateProductService
 {
-    private readonly IUnitOfWork unitOfWork;
+    private readonly IUnitOfWork _unitOfWork;
     public CreateProductService(IUnitOfWork unitOfWork)
     {
-        this.unitOfWork = unitOfWork;
+        _unitOfWork = unitOfWork;
     }
     
-    public async Task Create(ProductModel productModel)
+    public async Task<Guid> Create(ProductModel productModel)
     {
         var product = productModel.Adapt<Product>();
-        await unitOfWork.ProductRepository.Create(product);
-        await unitOfWork.Complete();
+        var createdProduct = await _unitOfWork.ProductRepository.Create(product);
+        await _unitOfWork.Complete();
+        
+        return createdProduct.Id;
     }
 }

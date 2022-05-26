@@ -1,39 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
-using Service1.Service2Services;
-
+using Models.Models;
+using S1.Application.Services.ProductServices;
 namespace Service1.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class ProductController : ControllerBase
 {
-    private readonly IService2Service _service2Service;
-    private readonly IService3Service _service3Service;
+    private readonly IGetProductService _getProductService;
+    private readonly ICreateProductService _createProductService;
 
-    public ProductController(IService2Service service2Service, IService3Service service3Service)
+    public ProductController(IGetProductService getProductService, ICreateProductService createProductService)
     {
-        _service2Service = service2Service;
-        _service3Service = service3Service;
+        _getProductService = getProductService;
+        _createProductService = createProductService;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Get()
+    [HttpGet, Route("GetAll")]
+    public async Task<IActionResult> GetAll()
     {
-        var productDetails = await _service2Service.GetProductDetails();
-        var user = await _service3Service.GetUser();
-        var products = new Product
-        {
-            Id = 1,
-            Name = "Product 1",
-            Description = "im a product"
-        };
-
-        var fullProduct = new FullProduct
-        {
-            User = user,
-            Product = products,
-            ProductDetails = productDetails
-        };
-        return Ok(fullProduct);
+        var products = await _getProductService.GetAll();
+        return Ok(products);
+    }
+    
+    [HttpGet, Route("GetFull")]
+    public async Task<IActionResult> GetFull(Guid id)
+    {
+        var product = await _getProductService.GetFull(id);
+        return Ok(product);
+    }
+    
+    
+    [HttpPost, Route("Create")]
+    public async Task<IActionResult> Create(ProductModel productModel)
+    {
+        var createdProductId=await _createProductService.Create(productModel);
+        return Ok(createdProductId);
     }
 }

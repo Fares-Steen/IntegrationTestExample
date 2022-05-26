@@ -1,4 +1,4 @@
-namespace Service1;
+namespace S1.Application;
 
 public class ServicesOption
 {
