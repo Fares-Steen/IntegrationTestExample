@@ -18,8 +18,9 @@ internal class Program
             .Build();
         var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+        // Add services to the container.
+        builder.Services.AddTransient<ExceptionHandlingMiddleware>();
+        builder.Services.AddLogging();
         builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -44,6 +45,7 @@ internal class Program
         app.UseAuthorization();
 
         app.MapControllers();
+        app.UseMiddleware<ExceptionHandlingMiddleware>();
 
         app.Run();
     }

@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using Models.Models;
 using Newtonsoft.Json;
+using S1.Application.Services.Service3.Services.Exceptions;
 
 namespace S1.Application.Services.Service3.Services;
 
@@ -29,12 +30,17 @@ public class Service3Service : IService3Service
                 var data = JsonConvert.DeserializeObject<UserModel>(res);
                 return data;
             }
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                var errorResponse = await response.Content.ReadAsStringAsync();
+                throw new Service3NotFoundException(errorResponse);
+            }
 
-            throw new Exception("response was not success");
+            throw new Service3Exception("response was not success");
         }
         catch (Exception e)
         {
-            throw new Exception($"{e.Message}");
+            throw new Service3Exception($"{e.Message}");
         }
     }
 }

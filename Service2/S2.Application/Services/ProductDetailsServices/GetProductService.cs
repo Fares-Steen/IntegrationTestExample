@@ -1,6 +1,7 @@
 using Mapster;
 using Models.Models;
 using S2.Application.IRepositories;
+using S2.Domain.Exceptions;
 
 namespace S2.Application.Services.ProductDetailsServices;
 
@@ -16,6 +17,10 @@ public class GetProductDetailsService : IGetProductDetailsService
     public async Task<ProductDetailsModel> GetByProductId(Guid productId)
     {
         var result = await _unitOfWork.ProductDetailsRepository.GetByProductId(productId);
+       if(result == null)
+        {
+            throw new DomainNotFoundException($"There is no ProductDetails for productId=={productId}");
+        }
         var productDetails = result.Adapt<ProductDetailsModel>();
         return productDetails;
     }

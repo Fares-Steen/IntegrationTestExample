@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using Models.Models;
 using Newtonsoft.Json;
+using S1.Application.Services.Service2Services.Exceptions;
 
 namespace S1.Application.Services.Service2Services;
 
@@ -28,12 +29,17 @@ public class Service2Service : IService2Service
                 var data = JsonConvert.DeserializeObject<ProductDetailsModel>(result);
                 return data;
             }
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                var errorResponse = await response.Content.ReadAsStringAsync();
+                throw new Service2NotFoundException(errorResponse);
+            }
 
-            throw new Exception("response was not success");
+            throw new Service2Exception("response was not success");
         }
         catch (Exception e)
         {
-            throw new Exception($"{e.Message}");
+            throw new Service2Exception($"{e.Message}");
         }
     }
 }

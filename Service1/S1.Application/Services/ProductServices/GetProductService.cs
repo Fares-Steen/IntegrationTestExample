@@ -3,6 +3,7 @@ using Models.Models;
 using S1.Application.IRepositories;
 using S1.Application.Services.Service2Services;
 using S1.Application.Services.Service3.Services;
+using S1.Domain.Exceptions;
 
 namespace S1.Application.Services.ProductServices;
 
@@ -29,6 +30,11 @@ public class GetProductService : IGetProductService
     public async Task<FullProductModel> GetFull(Guid productId)
     {
         var result = await _unitOfWork.ProductRepository.Get(productId);
+        if(result == null)
+        {
+            throw new DomainNotFoundException($"There is no product with productId=={productId}");
+        }
+
         var product = result.Adapt<ProductModel>();
 
         var service2Task = _service2Service.GetProductDetails(productId);

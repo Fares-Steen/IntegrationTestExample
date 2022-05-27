@@ -83,4 +83,32 @@ public class ProductControllerTest
 
         
     }
+
+
+    [TestMethod]
+    public async Task TestMethod2()
+    {
+        //Arrange
+        Product expectedProduct = new Product { Name = "Beans", Description = "very big beans" };
+        await _service1TestRepository.InjectProductInDb(expectedProduct);
+
+        ProductDetails UnexpectedProductDetails = new ProductDetails { Price = 200, Size = 3, ProductId = Guid.NewGuid() };
+        await _service2TestRepository.InjectProductDetailsInDb(UnexpectedProductDetails);
+
+        User UNexpectedUser1 = new User { FirstName = "Jarek", LastName = "unknown", ProductId = Guid.NewGuid() };
+        await _service3TestRepository.InjectUserInDb(UNexpectedUser1);
+
+        User UNexpectedUser2 = new User { FirstName = "Fares", LastName = "Steen", ProductId = Guid.NewGuid() };
+        await _service3TestRepository.InjectUserInDb(UNexpectedUser2);
+
+
+        //Act
+        var response = await _setUpTestEnvironment1.TestClient.GetAsync($"/Product/GetFull?id={expectedProduct.Id}");
+        var result = await response.Content.ReadAsStringAsync();
+
+        //Assert
+        Assert.AreEqual(response.StatusCode, System.Net.HttpStatusCode.InternalServerError);
+        Assert.IsTrue(result.Contains($"There is no user with productId=={expectedProduct.Id}"));
+        Assert.IsTrue(result.Contains($"There is no ProductDetails for productId=={expectedProduct.Id}"));
+    }
 }

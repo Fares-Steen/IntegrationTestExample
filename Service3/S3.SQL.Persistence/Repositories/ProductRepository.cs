@@ -16,8 +16,7 @@ public class UserRepository : GenericRepository<User>, IUserRepository
     {
         var result = await DbContext.Set<User>()
             .Where(p => p.ProductId == id)
-            .OrderBy(p => p.DateAdded)
-            .AsNoTracking().AsSplitQuery().FirstAsync();
+            .AsNoTracking().AsSplitQuery().FirstOrDefaultAsync();
 
         return result;
     }

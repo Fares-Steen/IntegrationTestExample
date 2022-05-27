@@ -17,8 +17,7 @@ public class ProductDetailsRepository : GenericRepository<ProductDetails>, IProd
     {
         var result = await DbContext.Set<ProductDetails>()
             .Where(p => p.ProductId == id)
-            .OrderBy(p => p.DateAdded)
-            .AsNoTracking().AsSplitQuery().FirstAsync();
+            .AsNoTracking().AsSplitQuery().FirstOrDefaultAsync();
 
         return result;
     }
