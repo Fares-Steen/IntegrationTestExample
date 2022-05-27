@@ -30,9 +30,12 @@ public class GetProductService : IGetProductService
     {
         var result = await _unitOfWork.ProductRepository.Get(productId);
         var product = result.Adapt<ProductModel>();
-        
-        var service2Result = await _service2Service.GetProductDetails(productId);
-        var service3Result = await _service3Service.GetUser(productId);
+
+        var service2Task = _service2Service.GetProductDetails(productId);
+        var service3Task = _service3Service.GetUser(productId);
+        Task.WaitAll(service2Task, service3Task);
+        var service2Result = service2Task.Result;
+        var service3Result = service3Task.Result;
         
         var fullProduct = new FullProductModel
         {

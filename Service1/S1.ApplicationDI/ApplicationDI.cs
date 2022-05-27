@@ -11,8 +11,8 @@ public static class ApplicationDI
     {
         services.AddScoped<ICreateProductService, CreateProductService>();
         services.AddScoped<IGetProductService, GetProductService>();
-        services.AddScoped<IService2Service, Service2Service>();
-        services.AddScoped<IService3Service, Service3Service>();
+        services.AddHttpClient<IService2Service,Service2Service>();
+        services.AddHttpClient<IService3Service,Service3Service>();
         return services;
     }
 }

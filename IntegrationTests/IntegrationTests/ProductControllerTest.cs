@@ -16,9 +16,9 @@ public class ProductControllerTest
     private readonly SetUpTestEnvironment3 _setUpTestEnvironment3;
     private readonly SetUpTestEnvironment2 _setUpTestEnvironment2;
     private readonly SetUpTestEnvironment1 _setUpTestEnvironment1;
-    private Service1TestRepository _service1TestRepository;
-    private Service2TestRepository _service2TestRepository;
-    private Service3TestRepository _service3TestRepository;
+    private readonly Service1TestRepository _service1TestRepository;
+    private readonly Service2TestRepository _service2TestRepository;
+    private readonly Service3TestRepository _service3TestRepository;
 
 
     public ProductControllerTest()
@@ -66,14 +66,17 @@ public class ProductControllerTest
 
         //Assert
         Assert.IsNotNull(fullProduct);
+        Assert.IsNotNull(fullProduct.ProductModel);
         Assert.AreEqual(expectedProduct.Id,fullProduct.ProductModel.Id);
         Assert.AreEqual(expectedProduct.Description,fullProduct.ProductModel.Description);
         Assert.AreEqual(expectedProduct.Name,fullProduct.ProductModel.Name);
 
+        Assert.IsNotNull(fullProduct.ProductDetailsModel);
         Assert.AreEqual(expectedProductDetails.Id,fullProduct.ProductDetailsModel.Id);
         Assert.AreEqual(expectedProductDetails.Price,fullProduct.ProductDetailsModel.Price);
         Assert.AreEqual(expectedProductDetails.Size,fullProduct.ProductDetailsModel.Size);
 
+        Assert.IsNotNull(fullProduct.UserModel);
         Assert.AreEqual(expectedUser.Id,fullProduct.UserModel.Id);
         Assert.AreEqual(expectedUser.FirstName,fullProduct.UserModel.FirstName);
         Assert.AreEqual(expectedUser.LastName,fullProduct.UserModel.LastName);

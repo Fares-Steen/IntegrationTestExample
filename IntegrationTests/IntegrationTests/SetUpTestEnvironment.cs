@@ -94,6 +94,8 @@ internal class SetUpTestEnvironment1 : WebApplicationFactory<Service1.Program>
                 Service3ApiUrl = ""
             });
             serviceCollection.Remove<S1.SQL.Persistence.Initialize.IDbInitializer>();
+            serviceCollection.Remove<IService2Service>();
+            serviceCollection.Remove<IService3Service>();
             serviceCollection.AddSingleton(service1DbContext);
             serviceCollection.AddSingleton(new Mock<S1.SQL.Persistence.Initialize.IDbInitializer>().Object);
             serviceCollection.AddScoped<IService2Service>(_ => new Service2Service(servicesOption, _service2Client));
