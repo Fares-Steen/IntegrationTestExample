@@ -1,10 +1,8 @@
-﻿
-
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using S1.SQL.Persistence;
 
-namespace IntegrationTests
+namespace IntegrationTests.Setup.ConnectionFactories
 {
     public sealed class Service1ConnectionFactory
     {

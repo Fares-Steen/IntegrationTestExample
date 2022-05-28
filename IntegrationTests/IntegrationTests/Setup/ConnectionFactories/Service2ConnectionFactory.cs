@@ -1,23 +1,21 @@
-﻿
-
-using Microsoft.Data.Sqlite;
+﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using S3.SQL.Persistence;
+using S2.SQL.Persistence;
 
-namespace IntegrationTests
+namespace IntegrationTests.Setup.ConnectionFactories
 {
-    public sealed class Service3ConnectionFactory
+    public sealed class Service2ConnectionFactory
     {
         private readonly SqliteConnection connection = new("DataSource=:memory:");
         private bool disposedValue;
 
-        public Service3DbContext CreateContextForSqLite()
+        public Service2DbContext CreateContextForSqLite()
         {
             connection.Open();
 
-            var option = new DbContextOptionsBuilder<Service3DbContext>().UseSqlite(connection).Options;
+            var option = new DbContextOptionsBuilder<Service2DbContext>().UseSqlite(connection).Options;
 
-            var context = new Service3DbContext(option);
+            var context = new Service2DbContext(option);
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();

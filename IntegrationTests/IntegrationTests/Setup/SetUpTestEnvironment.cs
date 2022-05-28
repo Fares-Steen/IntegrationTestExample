@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Net.Http;
+using IntegrationTests.Setup.ConnectionFactories;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -12,7 +13,7 @@ using S1.SQL.Persistence;
 using S2.SQL.Persistence;
 using S3.SQL.Persistence;
 
-namespace IntegrationTests;
+namespace IntegrationTests.Setup;
 
 internal class SetUpTestEnvironment3 : WebApplicationFactory<Service3.Program>
 {

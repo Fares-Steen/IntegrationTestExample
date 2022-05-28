@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using IntegrationTests.Setup;
 using IntegrationTests.TestRepositories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Models.Models;
@@ -8,7 +9,7 @@ using S1.Domain;
 using S2.Domain.Entities;
 using S3.Domain.Entities;
 
-namespace IntegrationTests;
+namespace IntegrationTests.Tests;
 
 [TestClass]
 public class ProductControllerTest
@@ -34,7 +35,7 @@ public class ProductControllerTest
     }
 
     [TestMethod]
-    public async Task TestMethod1()
+    public async Task GetFullProduct_ThenAllServicesSuccess()
     {
         //Arrange
         Product expectedProduct = new Product {Name = "Beans", Description = "very big beans" };
@@ -86,7 +87,7 @@ public class ProductControllerTest
 
 
     [TestMethod]
-    public async Task TestMethod2()
+    public async Task GetFullProduct_When_No_ProductDetails_And_No_User_ThenReturn_InternalServerError()
     {
         //Arrange
         Product expectedProduct = new Product { Name = "Beans", Description = "very big beans" };
@@ -107,7 +108,7 @@ public class ProductControllerTest
         var result = await response.Content.ReadAsStringAsync();
 
         //Assert
-        Assert.AreEqual(response.StatusCode, System.Net.HttpStatusCode.InternalServerError);
+        Assert.AreEqual(System.Net.HttpStatusCode.InternalServerError,response.StatusCode );
         Assert.IsTrue(result.Contains($"There is no user with productId=={expectedProduct.Id}"));
         Assert.IsTrue(result.Contains($"There is no ProductDetails for productId=={expectedProduct.Id}"));
     }
