@@ -1,24 +1,26 @@
 ﻿using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
-using S1.SQL.Persistence;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IntegrationTests.Setup.ConnectionFactories
 {
-    public sealed class Service1ConnectionFactory
+    public class ConnectionFactory<TDB> where TDB : DbContext
     {
         private readonly SqliteConnection connection = new("DataSource=:memory:");
         private bool disposedValue;
-
-        public Service1DbContext CreateContextForSqLite()
+        public TDB CreateContextForSqLite(Func<DbContextOptions<TDB>, TDB> createDbContext)
         {
             connection.Open();
 
-            var option = new DbContextOptionsBuilder<Service1DbContext>().UseSqlite(connection).Options;
+            var option = new DbContextOptionsBuilder<TDB>().UseSqlite(connection).Options;
+            var context = createDbContext(option);
 
-            var context = new Service1DbContext(option);
-
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            context!.Database.EnsureDeleted();
+            context!.Database.EnsureCreated();
 
             return context;
         }

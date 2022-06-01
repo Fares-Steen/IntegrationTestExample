@@ -21,7 +21,7 @@ internal class SetUpTestEnvironment3 : WebApplicationFactory<Service3.Program>
     internal readonly Service3DbContext service3DbContext;
     public SetUpTestEnvironment3()
     {
-        service3DbContext = new Service3ConnectionFactory().CreateContextForSqLite();
+        service3DbContext = new ConnectionFactory<Service3DbContext>().CreateContextForSqLite((options) => new Service3DbContext(options));
         TestClient = CreateClient();
     }
     protected override IHost CreateHost(IHostBuilder builder)
@@ -48,7 +48,7 @@ internal class SetUpTestEnvironment2 : WebApplicationFactory<Service2.Program>
 
     public SetUpTestEnvironment2()
     {
-        service2DbContext = new Service2ConnectionFactory().CreateContextForSqLite();
+        service2DbContext = new ConnectionFactory<Service2DbContext>().CreateContextForSqLite((options) => new Service2DbContext(options));
         TestClient = CreateClient();
     }
 
@@ -79,7 +79,7 @@ internal class SetUpTestEnvironment1 : WebApplicationFactory<Service1.Program>
 
     public SetUpTestEnvironment1(HttpClient service2Client,HttpClient service3Client)
     {
-        service1DbContext = new Service1ConnectionFactory().CreateContextForSqLite();
+        service1DbContext = new ConnectionFactory<Service1DbContext>().CreateContextForSqLite((options) => new Service1DbContext(options));
         _service2Client = service2Client;
         _service3Client = service3Client;
         TestClient = CreateClient();
