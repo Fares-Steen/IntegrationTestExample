@@ -8,15 +8,15 @@ using System.Threading.Tasks;
 
 namespace IntegrationTests.Setup.ConnectionFactories
 {
-    public class ConnectionFactory<TDB> where TDB : DbContext
+    public class ConnectionFactory<TDb> where TDb : DbContext
     {
-        private readonly SqliteConnection connection = new("DataSource=:memory:");
-        private bool disposedValue;
-        public TDB CreateContextForSqLite(Func<DbContextOptions<TDB>, TDB> createDbContext)
+        private readonly SqliteConnection _connection = new("DataSource=:memory:");
+        private bool _disposedValue;
+        public TDb CreateContextForSqLite(Func<DbContextOptions<TDb>, TDb> createDbContext)
         {
-            connection.Open();
+            _connection.Open();
 
-            var option = new DbContextOptionsBuilder<TDB>().UseSqlite(connection).Options;
+            var option = new DbContextOptionsBuilder<TDb>().UseSqlite(_connection).Options;
             var context = createDbContext(option);
 
             context!.Database.EnsureDeleted();
@@ -27,10 +27,10 @@ namespace IntegrationTests.Setup.ConnectionFactories
 
         private void Dispose(bool disposing)
         {
-            if (disposedValue) return;
-            if (disposing) connection.Close();
+            if (_disposedValue) return;
+            if (disposing) _connection.Close();
 
-            disposedValue = true;
+            _disposedValue = true;
         }
 
         public void Dispose()
