@@ -28,11 +28,6 @@ internal class SetUpTestEnvironment3 : WebApplicationFactory<Service3.Program>
     {
         builder.ConfigureServices(serviceCollection =>
         {
-            var servicesOption = Options.Create(new ServicesOption
-            {
-                Service2ApiUrl = "",
-                Service3ApiUrl = ""
-            });
             serviceCollection.Remove<S3.SQL.Persistence.Initialize.IDbInitializer>();
             serviceCollection.AddSingleton(service3DbContext);
             serviceCollection.AddSingleton(new Mock<S3.SQL.Persistence.Initialize.IDbInitializer>().Object);
@@ -56,11 +51,6 @@ internal class SetUpTestEnvironment2 : WebApplicationFactory<Service2.Program>
     {
         builder.ConfigureServices(serviceCollection =>
         {
-            var servicesOption = Options.Create(new ServicesOption
-            {
-                Service2ApiUrl = "",
-                Service3ApiUrl = ""
-            });
             serviceCollection.Remove<S2.SQL.Persistence.Initialize.IDbInitializer>();
             serviceCollection.AddSingleton(service2DbContext);
             serviceCollection.AddSingleton(new Mock<S2.SQL.Persistence.Initialize.IDbInitializer>().Object);
